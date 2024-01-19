@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('trains.update', ['train' => $train -> id]) }}" method="post"></form>
+    <form action="{{ route('trains.update', ['train' => $train -> id]) }}" method="post">
     @csrf
     {{method_field('PUT')}}
     <label for="">Name</label>
@@ -20,11 +20,13 @@
     <input type="number" name="year" value="{{$train -> year}}"><br><br>
 
     <label for="">Train Type</label>
-    <select name="train_type_id" value="{{$train -> train_type_id}}">
+    <select name="train_type_id" value="{{$train -> train_type_id}}" required >
+        <option value="" selected hidden>{{$train_type->type}}</option>
         @foreach ($train_types as $train_type)
             <option value="{{$train_type->id}}">{{$train_type->type}}</option>
         @endforeach
     </select>
     <input type="submit" value="Crear" name="">
+</form>
 </body>
 </html>

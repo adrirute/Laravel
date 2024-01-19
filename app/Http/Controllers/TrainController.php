@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Train;
 use App\Models\TrainType;
+use DB;
 
 
 class TrainController extends Controller
@@ -93,6 +94,7 @@ class TrainController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Db::table('trains')->where('id', '=', $id)->delete();
+        return redirect('/trains');
     }
 }

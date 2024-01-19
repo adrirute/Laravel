@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TrainType;
+use DB;
 
 class TrainTypeController extends Controller
 {
@@ -53,7 +54,8 @@ class TrainTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $train_type = TrainType::find($id);
+        return view('train_types/edit', ['train_type' => $train_type]);
     }
 
     /**
@@ -61,7 +63,13 @@ class TrainTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $train_type = TrainType::find($id);
+
+        $train_type -> type = $request -> input('type');
+        $train_type -> save();
+        
+        return redirect('/train_types');
+
     }
 
     /**
@@ -69,6 +77,7 @@ class TrainTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Db::table('train_types')->where('id', '=', $id)->delete();
+        return redirect('/train_types');
     }
 }

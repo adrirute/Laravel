@@ -8,6 +8,8 @@
 </head>
 <body>
        <p>Type: {{$train_type->type}}</p>
+       <br>
+       <a href="{{route('train_types.index')}}">Volver</a>
            
 </body>
 </html>

@@ -10,6 +10,8 @@
        <p>Name: {{$train->name}}</p>
        <p>Passengers: {{$train->passengers}}</p>
        <p>Year: {{$train->year}}</p>
-       <p>Train Type: {{$train->train_type->type}}</p>      
+       <p>Train Type: {{$train->train_type->type}}</p>   
+       <br>
+       <a href="{{route('trains.index')}}">Volver</a>
 </body>
 </html>

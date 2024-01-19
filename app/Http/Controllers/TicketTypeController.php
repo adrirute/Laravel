@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TicketType;
+use DB;
 
 class TicketTypeController extends Controller
 {
@@ -53,7 +54,8 @@ class TicketTypeController extends Controller
      */
     public function edit(string $id)
     {
-        
+        $ticket_type = TicketType::find($id);
+        return view('ticket_types/edit', ['ticket_type' => $ticket_type]);
     }
 
     /**
@@ -61,7 +63,12 @@ class TicketTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ticket_type = TicketType::find($id);
+
+        $ticket_type -> type = $request -> input('type');
+        $ticket_type -> save();
+
+        return redirect('/ticket_types');
     }
 
     /**
@@ -69,6 +76,7 @@ class TicketTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('ticket_types')->where('id', '=', $id)->delete();
+        return redirect('/ticket_types');
     }
 }

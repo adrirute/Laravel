@@ -9,7 +9,9 @@
 <body>
        <p>Date: {{$ticket->date}}</p>
        <p>Price: {{$ticket->price}}</p>
-       <p>Year: {{$ticket->train->name}}</p>
-       <p>Train Type: {{$ticket->ticket_type->type}}</p>      
+       <p>Train Name: {{$ticket->train->name}}</p>
+       <p>Train Type: {{$ticket->ticket_type->type}}</p>
+       <br>
+       <a href="{{route('tickets.index')}}">Volver</a>      
 </body>
 </html>

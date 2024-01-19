@@ -7,7 +7,9 @@
     <title>Mostrar</title>
 </head>
 <body>
-       <p>Type: {{$ticket_type->type}}</p>
-           
+       <p>Type: {{$ticket_type->type}}</p> <br>
+
+       <a href="{{route('ticket_types.index')}}">Volver</a>
+        
 </body>
 </html>
